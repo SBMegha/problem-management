@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/schemes.css">
+  <link rel="stylesheet" href="/css/addscheme.css">
+  <style>
+    .noProblem{
+      color: rgb(255, 255, 255);
+      margin-left: 60px;
+      margin-top: 30px;
+      
+    }
+  </style>
+  <title>Schemes</title>
+</head>
+<body>
+  <div class="schemes">
+  {{> nav}}
+    {{#if loggedIn}}
+    <a href="/public/addproblem" class="add-scheme-link"><button class="add-scheme">Add Problem</button></a>
+    {{#if problems}}
+    <table>
+      <tr>
+        {{#ifCustom employee '||' admin}}
+        <th>Submitted By</th>
+        <th>Problem Address</th>
+        <th>Description</th>
+        <th>Date of issue</th>
+        <th>Resolved</th>
+        <th>Update Status</th>
+        {{#if admin}}
+        <th>Delete</th>
+        {{/if}}
+        {{else}}
+        <th>Problem Department</th>
+        <th>Problem Address</th>
+        <th>Description</th>
+        <th>Date of issue</th>
+        <th>Resolved</th>
+        <th>Delete</th>
+        {{/ifCustom}}
+      </tr>
+      {{#each problems}}
+      <tr>
+        {{#ifCustom this.employee '||' this.admin}}
+          <td>{{this.submittedBy.name}}<br/><a href="tel:{{this.submittedBy.phone}}">{{this.submittedBy.phone}}</a><br/><a href="mailto:{{this.submittedBy.email}}">{{this.submittedBy.email}}</a></td>
+          <td>{{this.address.street}}<br/>{{this.address.taluk}}<br/>{{this.address.city}}<br/>{{this.address.pincode}}</td>
+          <td>{{this.description}}</td>
+          <td>{{this.fromDate}}</td>
+          {{#if this.resolved}}
+            <td style="background-color: green;">Resolved</td>
+          {{else}}
+            <td style="background-color: rgb(255, 92, 92);">Not Resolved</td>
+          {{/if}}
+          {{#ifCustom this.employee '||' this.admin}}
+            {{#if this.resolved}}
+              <td><a href="/employee/updateproblem/{{this._id}}" class="delete-link"><button style="color: rgb(254, 80, 80);" class="delete-scheme"> ❌ Mark Incomplete</button></a></td>
+            {{else}}
+              <td><a href="/employee/updateproblem/{{this._id}}" class="delete-link"><button class="delete-scheme" style="color: rgb(88, 143, 88);"> ✅ Mark Complete</button></a></td>
+            {{/if}}
+          {{/ifCustom}}
+          {{#if this.admin}}
+            <td><a href="/public/deleteproblem/{{this._id}}" class="delete-link"><button class="delete-scheme">    🗑️ Delete </button></a></td>
+          {{/if}}
+        {{else}}
+          <td>{{this.department.name}}</td>
+          <td>{{this.address.street}}<br/>{{this.address.taluk}}<br/>{{this.address.city}}<br/>{{this.address.pincode}}</td>
+          <td>{{this.description}}</td>
+          <td>{{this.fromDate}}</td>
+          {{#if this.resolved}}
+            <td style="background-color: green;">Resolved</td>
+          {{else}}
+            <td style="background-color: rgb(255, 92, 92);">Not Resolved</td>
+          {{/if}}
+          <td><a href="/public/deleteproblem/{{this._id}}" class="delete-link"><button class="delete-scheme"> 🗑️ Delete </button></a></td>
+        {{/ifCustom}}
+      </tr>
+      {{/each}}
+    </table>
+    {{else}}
+    <h1 class="noProblem">No problems found</h1>
+    {{/if}}
+    {{/if}}
+  </div>
+</body>
+</html>
+

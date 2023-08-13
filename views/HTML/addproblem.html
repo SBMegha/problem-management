@@ -1,0 +1,39 @@
+<link rel="stylesheet" href="../CSS/register.css">
+<link rel="stylesheet" href="../CSS/addproblem.css">
+
+<div class="login">
+    <div class="center">
+        <h1>Add Problem</h1>
+        <form method="post" action="#">
+          <div class="choose-dept">
+            <label for="department">Choose department:</label>
+            <select name="department" id="deaprtment">
+                <option value="electricity">Electricity</option>
+                <option value="water">Water</option>
+                <option value="education">Education</option>
+                <option value="health">Health care</option>
+                <option value="transport">Public transport</option>
+                <option value="agriculture">Agriculture</option>
+            </select>
+          </div>
+          <input
+          type="text"
+          name="description"
+          placeholder="Type your problem"
+          required
+        />
+        <input
+          type="text"
+          name="address"
+          placeholder="Enter your address"
+          required
+        />
+        <input
+          type="date"
+          name="fromDate"
+          placeholder="Enter date of problem started"
+        />
+        <input type="submit" name="submit" value="Submit" id="submit-btn" />
+        </form>
+    </div>
+</div>

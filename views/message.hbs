@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        .container {
+            width: 100%;
+            height: 80%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 2rem;
+            background-color: rgba(black, black, black, 0.5);
+            padding: 1rem;
+            border-radius: 25px;
+        }
+    </style>
+</head>
+<body>
+    {{> nav}}
+    <div class="container">
+        <h1>{{title}}</h1>
+        <p>{{message}}</p>
+        <p id="timer">Redirecting back in <span>5</span> seconds</p>
+    </div>
+    <script>
+        let time = 5;
+        let url = "{{link}}";
+        setInterval(() => {
+            if(time === 0) {
+                window.location.href = url;
+            }
+            document.querySelector("#timer").innerHTML = `Redirecting back in ${time} seconds`;
+            time--;
+        }, 1000);
+    </script>
+</body>
+</html>

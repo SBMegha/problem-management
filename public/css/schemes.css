@@ -1,0 +1,35 @@
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 80%;
+  margin: 2rem auto;
+  border: 1px solid #ddd;
+  background-color: rgba(255, 255, 255, 0.596);
+  backdrop-filter: blur(6px);
+}
+th,
+td {
+  text-align: center;
+  word-break: keep-all;
+  padding: 15px;
+}
+th {
+  background-color: black;
+  color: white;
+}
+tr{
+  transition: 0.4s;
+}
+tr:hover{
+  background-color: #969696;
+  transition: 0.8s;
+}
+td {
+  transition: 0.4s;
+}
+td:hover {
+  background-color: #fffdfd;
+  transition: 0.8s;
+  scale: 1.01;
+}
+/* -----------------------------------SCHEMES--------------------------------------------------- */

@@ -1,0 +1,11 @@
+.center h1{
+    padding: 10px 0 10px 0;
+}
+.center form{
+    padding: 6px 40px;
+}
+form input{
+    font-size: 17px;
+    padding: 9px;
+    margin: 7px 0;
+}

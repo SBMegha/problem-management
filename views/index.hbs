@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/homepage.css">
+    <title>Rural-Development</title>
+</head>
+<body>
+    <section class="main">
+    {{> nav}}
+        <div class="main-text">
+            {{#if loggedIn}}
+            <h1>Lets join our hands in making the city a beautiful place to live.</h1>
+            {{else}}
+            <h1>Let's join our hands in making the city beautiful.</h1>
+            {{/if}}
+            <p>Villages are the building blocks of our country. If we transform the villages, we will transform our country.</p>
+        </div>
+    </section>
+</body>
+</html>

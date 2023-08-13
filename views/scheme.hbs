@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/schemes.css">
+  <link rel="stylesheet" href="/css/addscheme.css">
+  <title>Schemes</title>
+</head>
+<body>
+  <div class="schemes">
+  {{> nav}}
+ {{!-- table --}}
+    {{#if admin}}
+    <a href="/admin/addscheme" class="add-scheme-link"><button class="add-scheme">Add Scheme</button></a>
+    {{/if}}
+    <table>
+      <tr>
+        <th>Scheme Name</th>
+        <th>Description</th>
+        <th>Department</th>
+        <th>Url</th>
+        {{#if admin}}
+        <th>Delete</th>
+        {{/if}}
+      </tr>
+      {{#each schemes}}
+      <tr>
+        <td>{{this.name}}</td>
+        <td>{{this.description}}</td>
+        <td>{{this.department.name}}</td>
+        <td><a href="{{this.url}}">Click here</a></td>
+        {{#if this.isAdmin}}
+        <td><a href="/admin/deletescheme/{{this._id}}" class="delete-link"><button class="delete-scheme"> 🗑️ Delete</button></a></td>
+        {{/if}}
+      </tr>
+      {{/each}}
+    </table>
+  </div>
+</body>
+</html>
+

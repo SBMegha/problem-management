@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/css/register.css"/>
+  <link rel="stylesheet" href="/css/adddepartment.css">
+  <link rel="stylesheet" href="/css/addproblem.css">
+
+  <title>Document</title>
+</head>
+<body>
+  {{> nav}}
+  <div class="login">
+    <div class="center">
+            <h1>Explain your problem</h1>
+            <form method="post" action="/public/addproblem">
+              <div class="choose-dept">
+                <label for="department">Choose department: </label>
+                <select name="department">
+                  {{#each departments}}
+                    <option value="{{this._id}}">{{this.name}}</option>
+                  {{/each}}
+                </select>
+              </div>
+              <input type="text" name="description" placeholder="Brief description of problem" required/>
+              {{!-- <label for="address">Address</label> --}}
+              <input type="text" name="street" placeholder="Enter your street" required/>
+              <input type="text" name="taluk" placeholder="Enter your taluk" required />
+              <input type="text" name="city" placeholder="Enter your city" required />
+              <input type="number" name="pincode" placeholder="Enter your pincode" required />
+              <input type="text" name="fromDate" placeholder="Enter date of problem started" id="Date" min="2010-01-01" onfocus="this.type='date'" onblur="this.type='text'"/>
+              <input type="submit" name="submit" value="Submit" id="submit-btn"/>                
+            </form>
+    </div>
+  </div>
+  <script>
+    var todaydate=new Date();
+    var month=todaydate.getMonth();
+    var year=todaydate.getUTCFullYear();
+    var tdate=todaydate.getDate();
+    if(month<10){
+      month="0"+month;
+    }
+    if(tdate<10){
+      tdate="0"+tdate;
+    }
+    var maxDate=year+"-"+month+"-"+tdate;
+    document.getElementById("Date").setAttribute("max",maxDate);
+  </script>
+</body>
+</html>

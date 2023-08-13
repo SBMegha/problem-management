@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/schemes.css">
+  <link rel="stylesheet" href="/css/addscheme.css">
+  <title>Employee</title>
+</head>
+<body>
+  <div class="schemes">
+  {{> nav}}
+ {{!-- table --}}
+    {{#if admin}}
+    <a href="/admin/addemployee" class="add-scheme-link"><button class="add-scheme">Add Employee</button></a>
+    {{/if}}
+    {{#if employees}}
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Department</th>
+        <th>Delete</th>
+      </tr>
+      {{#each employees}}
+      <tr>
+        <td>{{this.name}}</td>
+        <td>{{this.email}}</td>
+        <td>{{this.phone}}</td>
+        <td>{{this.department.name}}</td>
+        <td><a href="/admin/deleteemployee/{{this._id}}" class="delete-link"><button class="delete-scheme"> 🗑️ Delete</button></a></td>
+      </tr>
+      {{/each}}
+    </table>
+    {{else}}
+    <h1>No Employees</h1>
+    {{/if}}
+  </div>
+</body>
+</html>
+
